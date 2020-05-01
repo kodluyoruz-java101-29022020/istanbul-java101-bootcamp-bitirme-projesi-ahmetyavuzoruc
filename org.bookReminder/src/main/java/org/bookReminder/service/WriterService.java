@@ -29,7 +29,7 @@ public class WriterService {
 		return writerRepository.findWithWrtNo(wrtNo);
 	}
 	
-	public List<Writer> getAllEmployeeList() {
+	public List<Writer> getAllWriterList() {
 		
 		return writerRepository.getAllWriterList();
 	}
@@ -56,21 +56,21 @@ public class WriterService {
 		return writer.getWrtNo();
 	}
 	
-	public Long saveAsDraft(Long empNo) {
+	public Long saveAsDraft(Long wrtNo) {
 		
-		Writer employee = writerRepository.findWithWrtNo(empNo);
+		Writer writer = writerRepository.findWithWrtNo(wrtNo);
 		
-		if(employee == null) {
+		if(writer == null) {
 			return -1L;
 		}
 		
 		WriterDraft draft = new WriterDraft();
 		
-		draft.setWrtNo(BigInteger.valueOf(employee.getWrtNo()));
-		draft.setLastName(employee.getLastName());
-		draft.setName(employee.getName());
+		draft.setWrtNo(BigInteger.valueOf(writer.getWrtNo()));
+		draft.setLastName(writer.getLastName());
+		draft.setName(writer.getName());
 		
 		writerDraftRepository.save(draft);
-		return employee.getWrtNo();
+		return writer.getWrtNo();
 	}
 }
