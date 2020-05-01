@@ -4,41 +4,41 @@ import java.io.Serializable;
 import java.math.BigInteger;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "writer_document")
-public class WriterDraft implements Serializable{
+@Document(collection = "book_document")
+public class BookDraft implements Serializable{
 
 
 	private static final long serialVersionUID = -1450263362382412146L;
 
 	@org.springframework.data.annotation.Id
-	private BigInteger wrtNo;
+	private BigInteger bookNo;
 	
 	private String name;
 	
-	private String lastName;
+	private String type;
 
-	public BigInteger getWrtNo() {
-		return wrtNo;
+	public BigInteger getBookNo() {
+		return bookNo;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public String getLastName() {
-		return lastName;
+	public String getType() {
+		return type;
 	}
 
-	public void setWrtNo(BigInteger wrtNo) {
-		this.wrtNo = wrtNo;
+	public void setBookNo(BigInteger bookNo) {
+		this.bookNo = bookNo;
 	}
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	

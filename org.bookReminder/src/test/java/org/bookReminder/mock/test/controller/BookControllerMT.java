@@ -3,9 +3,9 @@ package org.bookReminder.mock.test.controller;
 import java.util.Arrays;
 import java.util.List;
 
-import org.bookReminder.controller.WriterController;
-import org.bookReminder.service.WriterService;
-import org.bookReminder.service.model.WriterProfile;
+import org.bookReminder.controller.BookController;
+import org.bookReminder.service.BookService;
+import org.bookReminder.service.model.BookProfile;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,13 +21,13 @@ import org.springframework.mock.web.MockHttpServletRequest;
 
 
 @RunWith(MockitoJUnitRunner.class)
-public class WriterControllerMT {
+public class BookControllerMT {
 
 	@Mock
-	private WriterService writerService;
+	private BookService bookService;
 	
 	@InjectMocks
-	private WriterController writerController;
+	private BookController bookController;
 	
 	
 	@Before
@@ -36,31 +36,31 @@ public class WriterControllerMT {
 	}
 	
 	@Test
-	public void getAllWriterProfileListWithApiKey() {
+	public void getAllBookProfileListWithApiKey() {
 		
 		MockHttpServletRequest request = new MockHttpServletRequest();
 		request.addHeader("x-api-key", "Yavuz");
         
 		
-		List<WriterProfile> profiles = Arrays.asList(new WriterProfile());
+		List<BookProfile> profiles = Arrays.asList(new BookProfile());
 		
 		Mockito
-			.when(writerService.getAllWriterProfileList(1))
+			.when(bookService.getAllBookProfileList(1))
 			.thenReturn(profiles);
         
         
-		ResponseEntity<List<WriterProfile>> writerList = writerController.getAllWriterProfileList(1, request);
+		ResponseEntity<List<BookProfile>> bookList = bookController.getAllBookProfileList(1, request);
 	
-        Assert.assertTrue(HttpStatus.UNAUTHORIZED.equals(writerList.getStatusCode()));
-        Assert.assertEquals(1, writerList.getBody().size());
+        Assert.assertTrue(HttpStatus.UNAUTHORIZED.equals(bookList.getStatusCode()));
+        Assert.assertEquals(1, bookList.getBody().size());
 	}
 	
-	private void prepareMockTestRuleWriterProfileList() {
+	private void prepareMockTestRuleBookProfileList() {
 		
-		List<WriterProfile> profiles = Arrays.asList(new WriterProfile());
+		List<BookProfile> profiles = Arrays.asList(new BookProfile());
 		
 		Mockito
-			.when(writerService.getAllWriterProfileList(1))
+			.when(bookService.getAllBookProfileList(1))
 			.thenReturn(profiles);
 	}
 	

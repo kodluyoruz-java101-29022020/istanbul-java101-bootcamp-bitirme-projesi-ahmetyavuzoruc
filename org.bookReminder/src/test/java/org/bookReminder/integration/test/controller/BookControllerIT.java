@@ -3,9 +3,9 @@ package org.bookReminder.integration.test.controller;
 
 import java.util.List;
 
-import org.bookReminder.dao.entity.Writer;
-import org.bookReminder.service.model.WriterContext;
-import org.bookReminder.service.model.WriterProfile;
+import org.bookReminder.dao.entity.Book;
+import org.bookReminder.service.model.BookContext;
+import org.bookReminder.service.model.BookProfile;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,7 +27,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestPropertySource({ "classpath:application.properties" })
-public class WriterControllerIT {
+public class BookControllerIT {
 
 	@Autowired
     private TestRestTemplate restTemplate;
@@ -51,63 +51,63 @@ public class WriterControllerIT {
 	
 	@Test
 	@Order(2)
-	public void findWriterById() {
+	public void findBookById() {
 		
-		String url = prepareWriterRestServiceRootUrl() + "writer/10003";
+		String url = prepareBookRestServiceRootUrl() + "book/10003";
 		
-		ResponseEntity<Writer> response = restTemplate.getForEntity(url, Writer.class);
+		ResponseEntity<Book> response = restTemplate.getForEntity(url, Book.class);
 		
-		Writer emp = response.getBody();
+		Book emp = response.getBody();
 		
 		Assert.assertTrue(HttpStatus.OK.equals(response.getStatusCode()));
-		Assert.assertTrue(10003 == emp.getWrtNo());
+		Assert.assertTrue(10003 == emp.getBookNo());
 	}
 	
 	@Test
 	@Order(3)
-	public void saveWriter() {
+	public void saveBook() {
 		
-		String url = prepareWriterRestServiceRootUrl() + "writer";
+		String url = prepareBookRestServiceRootUrl() + "book";
 		
-		WriterContext writerContext = new WriterContext();
-		writerContext.setName("TestUser1");
-		writerContext.setLastName("testUser1");
-		writerContext.setGender("F");
+		BookContext bookContext = new BookContext();
+		bookContext.setName("TestUser1");
+		bookContext.setType("testUser1");
+	
 		
 		
-		ResponseEntity<Long> response = restTemplate.postForEntity(url, writerContext, Long.class);
+		ResponseEntity<Long> response = restTemplate.postForEntity(url, bookContext, Long.class);
 		
-		Long wrtNo = response.getBody();
+		Long bookNo = response.getBody();
 		
 		Assert.assertTrue(HttpStatus.OK.equals(response.getStatusCode()));
-		Assert.assertNotNull(wrtNo);
+		Assert.assertNotNull(bookNo);
 	}
 	
 	@Test
 	@Order(4)
-	public void getAllWriterProfileList() {
+	public void getAllBookProfileList() {
 		
-		String url = prepareWriterRestServiceRootUrl() + "writer/profile/list?size=1";
+		String url = prepareBookRestServiceRootUrl() + "book/profile/list?size=1";
 		
 		HttpHeaders httpHeaders = new HttpHeaders();
 		httpHeaders.set("x-api-key", "Yavuz");
 		
 		HttpEntity<Object> httpEntity = new HttpEntity<Object>(httpHeaders);
 		
-		ResponseEntity<List<WriterProfile>> response = restTemplate.exchange(
+		ResponseEntity<List<BookProfile>> response = restTemplate.exchange(
 				url, 
 				HttpMethod.GET, 
 				httpEntity, 
-				new ParameterizedTypeReference<List<WriterProfile>>() {} );
+				new ParameterizedTypeReference<List<BookProfile>>() {} );
 		
-		List<WriterProfile> profiles = response.getBody();
+		List<BookProfile> profiles = response.getBody();
 		
 		Assert.assertTrue(HttpStatus.UNAUTHORIZED.equals(response.getStatusCode()));
 		Assert.assertNotNull(profiles);
 		Assert.assertEquals(1, profiles.size());
 	}
 	
-	private String prepareWriterRestServiceRootUrl() {
+	private String prepareBookRestServiceRootUrl() {
 		
 		return "http://localhost:" + tomcatPortNo + "/application/";
 	}
