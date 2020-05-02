@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BookDraftRepository extends MongoRepository<BookDraft, BigInteger>{
 
-	@Query(value = "{ 'empNo': ?0 }")
+	@Query(value = "{ 'bookNo': ?0 }")
 	public BookDraft findWriterByBookNumber(Long id);
 }

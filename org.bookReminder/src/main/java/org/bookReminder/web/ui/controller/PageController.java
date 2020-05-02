@@ -27,8 +27,8 @@ public class PageController {
 	@RequestMapping(value = "/book/list", method = RequestMethod.GET)
 	public String getBooks(Model model) {
 		
-		List<Book> books = bookService.getAllBookList();
-		model.addAttribute("books", books);
+		List<Book> book = bookService.getAllBookList();
+		model.addAttribute("book", book);
 		
 		return "thyme_book_list";
 	}
@@ -47,7 +47,7 @@ public class PageController {
 		
 		bookService.save(bookContext);
         
-		model.addAttribute("books", bookService.getAllBookList());
+		model.addAttribute("book", bookService.getAllBookList());
         
         return "thyme_book_list";
     }

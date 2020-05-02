@@ -22,13 +22,14 @@ public class BookProfile {
 		return authorName;
 	}
 
-	public void setWriter(Book book) {
+	public void setBook(Book book) {
 		this.book = book;
 	}
 
 	public void setAuthorName(String authorName) {
 		this.authorName = authorName;
 	}
+
 	
 	
 }

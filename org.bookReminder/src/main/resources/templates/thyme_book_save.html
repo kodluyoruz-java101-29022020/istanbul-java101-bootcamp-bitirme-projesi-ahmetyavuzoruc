@@ -23,7 +23,7 @@
     <div class="container my-5">
             <div class="row">
                 <div class="col-md-12">
-                    <form action="#" th:action="@{/pages/book}" th:object="${employeeContext}" method="POST">
+                    <form action="#" th:action="@{/pages/book}" th:object="${bookContext}" method="POST">
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <label for="name" class="col-form-label">Book Name</label>
@@ -35,7 +35,7 @@
                             <div class="form-group col-md-6">
                                 <label for="writer" class="col-form-label">Authors</label>
                                 <select multiple class="form-control">
-                                <option></option>
+                                <option>"*{author.name}"</option>
                                 
                               </select>
                                 
@@ -45,7 +45,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6 mt-5">
-                                <input type="submit" class="btn btn-primary" value="Kaydet">
+                                <input type="submit" class="btn btn-primary" value="Save">
                             </div>
                         </div>    
                     </form>

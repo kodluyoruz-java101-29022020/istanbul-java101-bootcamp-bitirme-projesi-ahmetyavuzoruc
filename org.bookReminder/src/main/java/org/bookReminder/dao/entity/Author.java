@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "authors")
+@Table(name = "author")
 public class Author {
 
 	@Id
@@ -23,31 +23,33 @@ public class Author {
 	private String name;
 	
 	@JsonIgnore
-	@ManyToMany(mappedBy = "authors", fetch = FetchType.LAZY)
+	@ManyToMany(mappedBy = "author", fetch = FetchType.LAZY)
 	private List<Book> book;
-	
 
-	public List<Book> getBook() {
-		return book;
-	}
-
-	public void setBook(List<Book> book) {
-		this.book = book;
-	}
-
-	public String getBookNo() {
+	public String getAuthorNo() {
 		return authorNo;
-	}
-
-	public void setBookNo(String authorNo) {
-		this.authorNo = authorNo;
 	}
 
 	public String getName() {
 		return name;
 	}
 
+	public List<Book> getBook() {
+		return book;
+	}
+
+	public void setAuthorNo(String authorNo) {
+		this.authorNo = authorNo;
+	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public void setBook(List<Book> book) {
+		this.book = book;
+	}
+	
+
+	
 }
