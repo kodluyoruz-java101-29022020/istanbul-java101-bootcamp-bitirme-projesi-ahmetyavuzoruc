@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/application")
+@RequestMapping("/book")
 public class BookController {
 
 	@Autowired
@@ -43,14 +43,14 @@ public class BookController {
 	public ResponseEntity<List<BookProfile>> 
 		getAllBookProfileList(@RequestParam("size") Integer upperLimit, HttpServletRequest httpRequest) {
 		
-		String apikey = (String)httpRequest.getHeader("x-api-key");
+		/*String apikey = (String)httpRequest.getHeader("x-api-key");
 		
 		if(apikey == null) {
 			throw new RuntimeException("Set x-api-key error!!!");
 		}
 		else if(!apikey.equals("Yavuz")) {
 			throw new RuntimeException("Invalid x-api-key error!!!");
-		}
+		}*/
 		
 		List<BookProfile> profiles = bookService.getAllBookProfileList(upperLimit);
 		
