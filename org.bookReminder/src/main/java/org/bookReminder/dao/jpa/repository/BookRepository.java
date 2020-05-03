@@ -2,7 +2,7 @@ package org.bookReminder.dao.jpa.repository;
 
 import java.util.List;
 
-import org.bookReminder.dao.entity.Book;
+import org.bookReminder.dao.jpa.entity.Book;
 import org.bookReminder.service.model.BookProfile;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;

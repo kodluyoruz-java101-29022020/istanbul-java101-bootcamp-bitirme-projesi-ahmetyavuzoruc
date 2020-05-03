@@ -3,10 +3,10 @@ package org.bookReminder.mock.test.service;
 import java.util.Arrays;
 import java.util.List;
 
-import org.bookReminder.dao.entity.Book;
+import org.bookReminder.dao.jpa.entity.Book;
 import org.bookReminder.dao.jpa.repository.BookRepository;
 import org.bookReminder.dao.mongo.entity.BookDraft;
-import org.bookReminder.dao.mongo.entity.repository.BookDraftRepository;
+import org.bookReminder.dao.mongo.repository.BookDraftRepository;
 import org.bookReminder.service.BookService;
 import org.bookReminder.service.model.BookContext;
 import org.junit.Assert;

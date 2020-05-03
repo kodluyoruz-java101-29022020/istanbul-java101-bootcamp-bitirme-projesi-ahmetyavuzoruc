@@ -1,6 +1,6 @@
 package org.bookReminder.service.model;
 
-import org.bookReminder.dao.entity.Book;
+import org.bookReminder.dao.jpa.entity.Book;
 
 public class BookProfile {
 

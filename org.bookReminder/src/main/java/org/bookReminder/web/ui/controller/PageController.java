@@ -3,8 +3,7 @@ package org.bookReminder.web.ui.controller;
 
 import java.util.List;
 
-
-import org.bookReminder.dao.entity.Book;
+import org.bookReminder.dao.jpa.entity.Book;
 import org.bookReminder.service.BookService;
 import org.bookReminder.service.model.BookContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @Controller
-@RequestMapping("/pages")
+@RequestMapping("/book")
 public class PageController {
 
 	@Autowired

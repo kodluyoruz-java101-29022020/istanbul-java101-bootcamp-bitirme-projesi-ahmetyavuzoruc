@@ -1,4 +1,4 @@
-package org.bookReminder.dao.entity;
+package org.bookReminder.dao.jpa.entity;
 
 import java.io.Serializable;
 import java.util.List;

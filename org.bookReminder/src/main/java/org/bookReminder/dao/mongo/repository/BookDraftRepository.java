@@ -1,4 +1,4 @@
-package org.bookReminder.dao.mongo.entity.repository;
+package org.bookReminder.dao.mongo.repository;
 
 import java.math.BigInteger;
 
