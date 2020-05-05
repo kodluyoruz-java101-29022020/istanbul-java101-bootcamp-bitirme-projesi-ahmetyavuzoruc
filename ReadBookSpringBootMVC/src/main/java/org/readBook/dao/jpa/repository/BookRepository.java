@@ -20,5 +20,8 @@ public interface BookRepository extends CrudRepository<Book, Long>{
 		
 		@Query(value = "SELECT e FROM Book e")
 		public List<Book> getAllBookList();
+		
+		@Query(value = "SELECT e FROM Book e WHERE e.bookName=:bookName")
+		public List<Book> findByBookName(@Param("bookName") String bookName);
 
 }

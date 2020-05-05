@@ -20,6 +20,7 @@ public class BookService {
 
 		return bookRepository.findWithBookId(bookId);
 	}
+	
 
 	public List<Book> getAllBookList() {
 
@@ -44,5 +45,15 @@ public class BookService {
 		
 		return book.getBookId();
 	}
+	
+	public List<Book> searchBy(String bookName) {
+
+		List<Book> result = null;
+		
+			result = bookRepository.findByBookName(bookName);
+		
+		return result;
+	}
+	
 
 }
