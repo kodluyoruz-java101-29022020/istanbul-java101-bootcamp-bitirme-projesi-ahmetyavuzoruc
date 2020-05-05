@@ -35,7 +35,7 @@ public class BookControllerMT {
 		MockitoAnnotations.initMocks(this);
 	}
 	
-	@Test
+	/*@Test
 	public void getAllBookProfileListWithApiKey() {
 		
 		MockHttpServletRequest request = new MockHttpServletRequest();
@@ -62,6 +62,6 @@ public class BookControllerMT {
 		Mockito
 			.when(bookService.getAllBookProfileList(1))
 			.thenReturn(profiles);
-	}
+	}*/
 	
 }

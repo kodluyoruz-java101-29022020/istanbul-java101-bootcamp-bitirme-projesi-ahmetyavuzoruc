@@ -1,16 +1,10 @@
 package org.bookReminder.dao.jpa.entity;
 
 import java.io.Serializable;
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -20,28 +14,23 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Table(name = "book")
 public class Book implements Serializable {
 
-	private static final long serialVersionUID = -82439648328404424L;
+	
+	
+	private static final long serialVersionUID = 2L;
 
 	@Id
-	@org.springframework.data.annotation.Id
-	@Column(name = "book_no")
+	@GeneratedValue
+	@Column(name = "book_No")
 	private Long bookNo;
 
-	@Column(name = "book_name")
+	@Column(name = "book_Name")
 	private String name;
 
-	@Column(name = "book_type")
+	@Column(name = "book_Type")
 	private String type;
 
-	//@OneToMany(mappedBy = "book", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinTable(
-			name = "author_book", 
-			joinColumns = { @JoinColumn(name = "book_no") }, 
-			inverseJoinColumns = { @JoinColumn(name = "author_no") })
-	
-	private List<Author> author;
+	@Column(name = "author_Name")
+	private String authorName;
 
 	public Long getBookNo() {
 		return bookNo;
@@ -55,8 +44,8 @@ public class Book implements Serializable {
 		return type;
 	}
 
-	public List<Author> getAuthor() {
-		return author;
+	public String getAuthorName() {
+		return authorName;
 	}
 
 	public void setBookNo(Long bookNo) {
@@ -71,8 +60,8 @@ public class Book implements Serializable {
 		this.type = type;
 	}
 
-	public void setAuthor(List<Author> author) {
-		this.author = author;
+	public void setAuthorName(String authorName) {
+		this.authorName = authorName;
 	}
 
 	@Override
@@ -111,8 +100,5 @@ public class Book implements Serializable {
 			return false;
 		return true;
 	}
-
 	
-	
-
 }

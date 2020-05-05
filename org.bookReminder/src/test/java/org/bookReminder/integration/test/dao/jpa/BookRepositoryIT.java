@@ -32,21 +32,14 @@ public class BookRepositoryIT {
 	@Order(1)
 	public void selectBookByBookNo() {
 		
-		Long maxId = bookRepository.findMaxId();
+		Long maxId = bookRepository.findMaxBookNo();
 		Book book = bookRepository.findWithBookNo(maxId);
 		
 		Assert.assertNotNull(book);
 		Assert.assertTrue(book.getBookNo() > 0);
 	}
 	
-	@Test
-	@Order(2)
-	public void selectAllBookProfileList() {
-		
-		List<BookProfile> bookProfileList = bookRepository.getAllBookProfileList(PageRequest.of(0, 1));
-		
-		Assert.assertEquals(bookProfileList.size(), 1);
-	}
+	
 	
 	@Test
 	@Transactional
@@ -54,7 +47,7 @@ public class BookRepositoryIT {
 	@Order(3)
 	public void saveBook() {
 		
-		Long maxId = bookRepository.findMaxId();
+		Long maxId = bookRepository.findMaxBookNo();
 		Long newBookId = maxId + 1;
 		
 		Book book = new Book();
@@ -78,7 +71,7 @@ public class BookRepositoryIT {
 	@Order(4)
 	public void updateBook() {
 		
-		Long maxId = bookRepository.findMaxId();
+		Long maxId = bookRepository.findMaxBookNo();
 		Book book = bookRepository.findWithBookNo(maxId);
 		
 		book.setName("Cimri");
@@ -99,7 +92,7 @@ public class BookRepositoryIT {
 	@Order(5)
 	public void deleteBook() {
 		
-		Long maxId = bookRepository.findMaxId();
+		Long maxId = bookRepository.findMaxBookNo();
 		Book book = bookRepository.findWithBookNo(maxId);
 		
 		bookRepository.delete(book);

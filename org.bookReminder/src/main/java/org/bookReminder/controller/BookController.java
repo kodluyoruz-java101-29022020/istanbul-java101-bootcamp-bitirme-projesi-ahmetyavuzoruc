@@ -20,17 +20,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/book")
+@RequestMapping("/application")
 public class BookController {
 
 	@Autowired
 	private BookService bookService;
 	
 	
-	@RequestMapping(value = "/book/{id}", method = RequestMethod.GET)
-	public Book findByBookNo(@PathVariable("id") Long id) {
+	@RequestMapping(value = "/book/{book_No}", method = RequestMethod.GET)
+	public Book findByBookNo(@PathVariable("book_No") Long bookNo) {
 		
-		return bookService.findByBookNo(id);
+		return bookService.findByBookNo(bookNo);
 	}
 	
 	@RequestMapping(value = "/book/list", method = RequestMethod.GET)
@@ -39,38 +39,21 @@ public class BookController {
 		return bookService.getAllBookList();
 	}
 	
-	@RequestMapping(value = "/book/profile/list", method = RequestMethod.GET)
-	public ResponseEntity<List<BookProfile>> 
-		getAllBookProfileList(@RequestParam("size") Integer upperLimit, HttpServletRequest httpRequest) {
-		
-		/*String apikey = (String)httpRequest.getHeader("x-api-key");
-		
-		if(apikey == null) {
-			throw new RuntimeException("Set x-api-key error!!!");
-		}
-		else if(!apikey.equals("Yavuz")) {
-			throw new RuntimeException("Invalid x-api-key error!!!");
-		}*/
-		
-		List<BookProfile> profiles = bookService.getAllBookProfileList(upperLimit);
-		
-		ResponseEntity<List<BookProfile>> response = 
-				new ResponseEntity<List<BookProfile>>(profiles, HttpStatus.UNAUTHORIZED);
-		
-		return response;
-	}
 	
-	
-	@RequestMapping(value = "/book", method = RequestMethod.POST)
+	@RequestMapping(value = "/book/save", method = RequestMethod.POST)
 	public Long save(@RequestBody BookContext bookContext) {
 		
 		return bookService.save(bookContext);
 	}
-	
+
 	@RequestMapping(value = "/book/draft", method = RequestMethod.POST)
-	public Long saveAsDraft(@RequestParam("id") Long id) {
+	public Long saveAsDraft(@RequestParam("book_No") Long bookNo) {
 		
-		return bookService.saveAsDraft(id);
+		return bookService.saveAsDraft(bookNo);
 	}
+	
+	
+	
+	
 	
 }

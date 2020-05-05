@@ -117,7 +117,7 @@ public class BookServiceMT {
 	    
 		
 	    Mockito
-			.when(bookRepository.findMaxId())
+			.when(bookRepository.findMaxBookNo())
 			.thenReturn(maxBookId);
 	    
 		Mockito
@@ -186,7 +186,7 @@ public class BookServiceMT {
 		book.setType(bookContext.getType());
 	 
 	    Mockito
-			.when(bookRepository.findMaxId())
+			.when(bookRepository.findMaxBookNo())
 			.thenReturn(bookId);
 	    
 		Mockito

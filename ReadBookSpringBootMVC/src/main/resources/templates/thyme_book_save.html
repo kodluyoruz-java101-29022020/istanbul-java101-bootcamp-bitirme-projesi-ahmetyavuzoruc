@@ -21,29 +21,27 @@
             <h2 class="mb-5">New Book</h2>
             <div class="row">
                 <div class="col-md-12">
-                    <form action="#" th:action="@{/app/book}" th:object="${BookContext}" method="POST">
+                    <form action="#" th:action="@{/pages/book}" th:object="${bookContext}" method="POST">
                         <div class="row">
                             <div class="form-group col-md-6">
-                                <label for="bookName" class="col-form-label">BookName</label>
-                                <input type="text" th:field="*{bookName}" class="form-control" id="bookName" placeholder="BookName">
+                                <label for="bookName" class="col-form-label">Book Name</label>
+                                <input type="text" th:field="*{bookName}" class="form-control" id="bookName" placeholder="Book Name">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="type" class="col-form-label">Type</label>
-                                <input type="text" th:field="*{type}" class="form-control" id="type" placeholder="Type">
+                                <label for="bookType" class="col-form-label">Type</label>
+                                <input type="text" th:field="*{bookType}" class="form-control" id="bookType" placeholder="Book Type">
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-6">
-                                <label for="authorName" class="col-form-label">AutherName</label>
-                                <input type="text" th:field="*{authorName}" class="form-control" id="autherName" placeholder="AutherName">
+                                <label for="bookAuthor" class="col-form-label">AutherName</label>
+                                <input type="text" th:field="*{bookAuthor}" class="form-control" id="bookAuthor" placeholder="Book Author">
                             </div>
-       
-                          
-                            
+
                         </div>
                         <div class="row">
                             <div class="col-md-6 mt-5">
-                                <input type="submit" class="btn btn-primary" value="Kaydet">
+                                <input type="submit" class="btn btn-primary" value="Save">
                             </div>
                         </div>    
                     </form>

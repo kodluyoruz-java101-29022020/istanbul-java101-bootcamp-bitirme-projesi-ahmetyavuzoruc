@@ -43,7 +43,7 @@ public class BookService {
 	@Transactional
 	public Long save(BookContext bookContext) {
 		
-		Long maxId = bookRepository.findMaxId() + 1;
+		Long maxId = bookRepository.findMaxBookNo() + 1;
 		
 		Book book = new Book();
 		book.setBookNo(maxId);
@@ -67,7 +67,7 @@ public class BookService {
 		
 		BookDraft draft = new BookDraft();
 		
-		draft.setBookNo(BigInteger.valueOf(book.getBookNo()));
+		draft.setBookNo(Long.valueOf(book.getBookNo()));
 		draft.setType(book.getType());
 		draft.setName(book.getName());
 		

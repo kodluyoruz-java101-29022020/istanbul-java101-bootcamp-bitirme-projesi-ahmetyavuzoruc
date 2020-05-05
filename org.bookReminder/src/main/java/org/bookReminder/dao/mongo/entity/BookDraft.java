@@ -2,22 +2,37 @@ package org.bookReminder.dao.mongo.entity;
 
 import java.io.Serializable;
 import java.math.BigInteger;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "book_document")
 public class BookDraft implements Serializable{
 
+	
+	private static final long serialVersionUID = 1L;
 
-	private static final long serialVersionUID = -1450263362382412146L;
-
-	@org.springframework.data.annotation.Id
-	private BigInteger bookNo;
+	@Id
+	@GeneratedValue
+	private Long bookNo;
 	
 	private String name;
 	
 	private String type;
+	
+	private String authorName;
 
-	public BigInteger getBookNo() {
+	public String getAuthorName() {
+		return authorName;
+	}
+
+	public void setAuthorName(String authorName) {
+		this.authorName = authorName;
+	}
+
+	public Long getBookNo() {
 		return bookNo;
 	}
 
@@ -29,7 +44,7 @@ public class BookDraft implements Serializable{
 		return type;
 	}
 
-	public void setBookNo(BigInteger bookNo) {
+	public void setBookNo(Long bookNo) {
 		this.bookNo = bookNo;
 	}
 

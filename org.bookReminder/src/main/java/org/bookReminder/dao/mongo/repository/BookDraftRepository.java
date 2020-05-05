@@ -1,6 +1,6 @@
 package org.bookReminder.dao.mongo.repository;
 
-import java.math.BigInteger;
+
 
 import org.bookReminder.dao.mongo.entity.BookDraft;
 import org.springframework.data.mongodb.repository.MongoRepository;
@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface BookDraftRepository extends MongoRepository<BookDraft, BigInteger>{
+public interface BookDraftRepository extends MongoRepository<BookDraft, Long>{
 
-	@Query(value = "{ 'bookNo': ?0 }")
-	public BookDraft findWriterByBookNumber(Long id);
+	@Query(value = "{ 'book_No': ?0 }")
+	public BookDraft findWriterByBookNumber(Long bookNo);
 }

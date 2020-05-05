@@ -1,11 +1,12 @@
-package org.bookReminder.web.ui.controller;
+package org.readBook.controller.webUi;
 
 
 import java.util.List;
 
-import org.bookReminder.dao.jpa.entity.Book;
-import org.bookReminder.service.BookService;
-import org.bookReminder.service.model.BookContext;
+
+import org.readBook.dao.jpa.entity.Book;
+import org.readBook.service.BookService;
+import org.readBook.service.model.BookContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,8 +16,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 
+
 @Controller
-@RequestMapping("/book")
+@RequestMapping("/pages")
 public class PageController {
 
 	@Autowired
@@ -24,7 +26,7 @@ public class PageController {
 	
 	
 	@RequestMapping(value = "/book/list", method = RequestMethod.GET)
-	public String getBooks(Model model) {
+	public String getBook(Model model) {
 		
 		List<Book> book = bookService.getAllBookList();
 		model.addAttribute("book", book);
@@ -42,7 +44,7 @@ public class PageController {
 	
 	@RequestMapping(value = "/book", method = RequestMethod.POST)
     public String save(BookContext bookContext, BindingResult result, Model model) {
-        
+  
 		
 		bookService.save(bookContext);
         

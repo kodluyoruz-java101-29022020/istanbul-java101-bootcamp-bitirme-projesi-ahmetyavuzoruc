@@ -15,7 +15,8 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 		"org.bookReminder.controller",
 		"org.bookReminder.dao",
 		"org.bookReminder.dao.jpa.repository",
-		"org.bookReminder.dao.mongo.repository"})
+		"org.bookReminder.dao.mongo.repository",
+		"org.bookReminder.web.ui.controller"})
 
 
 
